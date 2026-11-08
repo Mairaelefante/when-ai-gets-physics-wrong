@@ -1,0 +1,11 @@
+{
+  "beta": 0.68359375,
+  "cutoff_keV": 7.314285714285714,
+  "mean_energy_keV": 5.047996051229458,
+  "ballistic": 0.1353352832366127,
+  "stochastic_acceptance": 0.2671527383902417,
+  "mean_rule_acceptance": 0.0,
+  "mean_rule": "invalid_for_tail",
+  "transparent_acceptance": 1.0,
+  "earth_claim": "not_established"
+}

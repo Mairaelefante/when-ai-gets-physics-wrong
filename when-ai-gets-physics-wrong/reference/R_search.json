@@ -1,0 +1,10 @@
+{
+  "global_p": 9.95950450442569e-05,
+  "unknown_lower": 9.96e-08,
+  "unknown_upper": 0.0007968000000000001,
+  "block_decision": "below_threshold",
+  "unknown_decision": "undetermined",
+  "replication_p": 1e-08,
+  "replication_decision": "meets_threshold",
+  "particle_origin": "not_identified"
+}

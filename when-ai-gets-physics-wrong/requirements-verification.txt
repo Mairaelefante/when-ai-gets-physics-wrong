@@ -1,0 +1,4 @@
+# Computational checks were run with CPython 3.12.14.
+# Core references, grader, tests and API runner use only the standard library.
+numpy==2.3.5
+scipy==1.17.0

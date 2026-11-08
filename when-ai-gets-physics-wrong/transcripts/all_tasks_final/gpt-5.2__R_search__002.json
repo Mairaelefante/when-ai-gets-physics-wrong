@@ -1,0 +1,175 @@
+{
+  "task": "R_search",
+  "trial": 2,
+  "requested_model": "gpt-5.2",
+  "test_only": false,
+  "started_at": "2026-11-08T08:20:10.630195+00:00",
+  "request": {
+    "model": "gpt-5.2",
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a scientific analyst. Solve the supplied problem from its stated assumptions. Return the requested JSON object including your derivation and limitations in the explanation field."
+      },
+      {
+        "role": "user",
+        "content": "A synthetic cavity search reports a fixed-cell, one-sided null tail probability p=9.96e-8 for its largest candidate. The search covered 8000 cells organized into 1000 blocks of 8 cells: all eight test statistics within a block are perfectly identical, while different blocks are independent and have the same null marginal distribution. The local p already accounts for every other fitted parameter; the only selection here is choosing the maximum cell. Calculate the probability under the global null that any searched cell reaches this local threshold. The predetermined global discovery-test criterion is p_global<=2.87e-7 (rounded one-sided five-sigma criterion).\n\nA second auditor cannot verify any cell-dependence information, knowing only 8000 cells and the same marginal p at each cell. Give the sharp universal lower and upper bounds for the union probability with arbitrary dependence; under those facts alone, decide whether meeting the criterion can be determined.\n\nA separate independent validation run then tests exactly one preregistered frequency and template, with no choices based on that run's data and no additional hidden trials, under a correctly calibrated null. It obtains one-sided p_rep=1e-8. Assess this replication test by itself against the SAME criterion, without combining it with the discovery run. Even if it meets the criterion, decide whether these statistical results alone identify a dark-matter particle rather than an unmodeled instrumental or astrophysical cause.\n\nReturn global_p, unknown_lower, unknown_upper, replication_p as numbers. Return block_decision as \"meets_threshold\" or \"below_threshold\" (below refers to significance), unknown_decision as \"meets_threshold\", \"below_threshold\", or \"undetermined\", replication_decision as \"meets_threshold\" or \"below_threshold\", and particle_origin as \"identified\" or \"not_identified\". Explain dependence, selection, the bounds, what replication supports, and what physical controls are still needed.\nReturn one JSON object with the requested fields and a nonempty string field \"explanation\". In the explanation derive the calculations, justify the decisions, state the scope and important limitations, and propose a discriminating follow-up. Numbers use the units specified. Numeric grading tolerance is max(1e-10, 0.2% of reference magnitude). Optional additional fields are accepted but not automatically scored. The explanation will be manually adjudicated; correct numbers alone do not establish scientific validity. Decision strings are chosen from the alternatives given; do not put numbers in strings. No real experimental data are used."
+      }
+    ],
+    "max_output_tokens": 8192,
+    "store": false
+  },
+  "request_sha256": "6998d3728e3afb37d77791d0174ef10616a542b2eb3c57bf78b4beef9750a996",
+  "fingerprints": {
+    "grader.py": "6464129e5c711e52fc5690476a285ddb0e193a268e404d60abf790c8c738c28b",
+    "reference.py": "a206b53fda993219a3372401a2c3623a7e7b92894f02f68145d8d72b4241a766",
+    "run_eval.py": "5a82c00dd75efac88a6fb418b13bc61e6f21d28f1095c7d71eb4a26de38fe7b9",
+    "tasks/R_calibration.json": "4715081be68be63493b871af3ce8217dc6d0a0b95eab4e94c5b3bb2b099bd684",
+    "tasks/R_search.json": "ed9451eb2a4e379954e272ec8ced09b83506dbd6645a0682490f02b8cb608dfb",
+    "tasks/W_geometry.json": "9e94e544d26bb3e7a675138b5816a2c386ece9c6f7e67ee482de6992bcd10b73",
+    "tasks/W_transport.json": "fa1f70ffc39e269fe70616fa3f7e26d787d1f544a15dad6819119e9e8a33643b",
+    "reference/R_calibration.json": "847f854fb225f8222d477af8a2129548656fd8198298ce8deefd48933abeac37",
+    "reference/R_search.json": "7d025819a953e9d4b5a75ad935d87c04993176015e317391a1997ebcb89043bb",
+    "reference/W_geometry.json": "6e966cc362f46bcb29d0e5b5743b901ec974f258fefa88025527a4000498bd9a",
+    "reference/W_transport.json": "d692ec988bd01c070c39424906d82db7e560fa642c649bebc19807ac845728d3"
+  },
+  "status": "completed",
+  "settings_note": "Unspecified generation parameters use provider defaults; no seed or previous-response context. Hidden internal reasoning is not exposed by the API.",
+  "http_status": 200,
+  "raw_response": {
+    "id": "resp_038dc2e474e4e8c5016af030babf6087d2ae75128b3bc0c0dd",
+    "object": "response",
+    "created_at": 1794126010,
+    "status": "completed",
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1794126029,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 8192,
+    "max_tool_calls": null,
+    "model": "gpt-5.2-2025-12-11",
+    "moderation": null,
+    "output": [
+      {
+        "id": "msg_038dc2e474e4e8c5016af030bb51ac87d2b9195a896dc785bc",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"global_p\": 9.956142414194563e-05,\n  \"unknown_lower\": 9.96e-08,\n  \"unknown_upper\": 0.000796768362929011,\n  \"replication_p\": 1e-08,\n  \"block_decision\": \"below_threshold\",\n  \"unknown_decision\": \"undetermined\",\n  \"replication_decision\": \"meets_threshold\",\n  \"particle_origin\": \"not_identified\",\n  \"explanation\": \"1) Global-null probability with the stated block dependence\\n- There are 1000 independent blocks. Within each block, the 8 cell test statistics are perfectly identical, so the event \u201cany of the 8 cells in a block crosses the local threshold\u201d is exactly the same as \u201cthe (common) block statistic crosses the threshold\u201d.\\n- The reported local one-sided tail probability for a single cell under the null is p = 9.96e-8. Because all cells in a block share the same statistic and same null marginal, each block has the same exceedance probability p.\\n- With independence across blocks, the global-null probability that any searched cell (equivalently: any block) reaches the local threshold is\\n  p_global = P(\u22c3_{b=1}^{1000} exceed_b) = 1 \u2212 (1 \u2212 p)^{1000}.\\n  Numerically: p_global = 1 \u2212 (1 \u2212 9.96e-8)^{1000} \u2248 9.956142414194563e-05.\\n- Comparison to the predetermined criterion p_global \u2264 2.87e-7: 9.96e-5 is much larger, so it does not meet the discovery criterion (i.e., it is below the required significance).\\n\\n2) Second auditor: only N=8000 and marginal p per cell; dependence unknown\\nLet A_i be the event that cell i exceeds the local threshold, with P(A_i)=p for all i, but with arbitrary dependence.\\n- Universal lower bound (sharp): P(\u22c3 A_i) \u2265 max_i P(A_i) = p. This is attained when all A_i are identical events (perfect dependence across all 8000 cells).\\n  Thus unknown_lower = p = 9.96e-8.\\n- Universal upper bound (sharp): P(\u22c3 A_i) \u2264 min(1, \u03a3 P(A_i)) = min(1, 8000 p) (Boole/union bound). This is attained when events are disjoint (or nearly so) up to probability mass constraints.\\n  Thus unknown_upper = 8000 \u00d7 9.96e-8 = 7.96768362929011e-4.\\n- Because the criterion 2.87e-7 lies strictly between these bounds (9.96e-8 < 2.87e-7 < 7.97e-4), the auditor cannot determine from N and marginal p alone whether the global criterion is met. Hence unknown_decision = \u201cundetermined\u201d.\\n\\n3) Independent preregistered replication run (single test)\\n- The validation run performs exactly one pre-registered test under a correctly calibrated null, so there is no look-elsewhere/selection correction needed for that run: p_global,rep = p_rep = 1e-8.\\n- Compare to the same criterion 2.87e-7: 1e-8 \u2264 2.87e-7, so replication_decision = \u201cmeets_threshold\u201d.\\n\\n4) What replication supports vs what it does not\\n- Statistically, the replication run by itself provides strong evidence against the specific null model used to compute p_rep (e.g., noise-only, background-only, etc.) at the tested frequency/template.\\n- However, \u201cdark-matter particle identified\u201d is a causal/physical attribution claim, not a statement that follows from p-values alone. A small p-value (even replicated) rules out only the null model as specified; it does not uniquely discriminate dark matter from an unmodeled instrumental artifact or an astrophysical line/background mismatch that is not included in the null.\\n- Therefore particle_origin = \u201cnot_identified\u201d. Identification requires demonstrating that plausible non-DM explanations are inconsistent with the full body of data and controls.\\n\\n5) Key dependence/selection points and limitations\\n- In the discovery scan, the only selection described is choosing the maximum cell. The stated dependence structure reduces 8000 nominal cells to 1000 independent effective trials; ignoring that would over-penalize, while assuming full independence would under-penalize if correlations exist.\\n- For the auditor with unknown dependence, only the Fr\u00e9chet-type bounds (max marginal; union bound) are justified; any stronger statement would require additional dependence information.\\n- Even with a \u201c5-sigma-equivalent\u201d p-value, model misspecification (incorrect null calibration, unaccounted systematics, or hidden trial factors) can invalidate the inferential meaning.\\n\\n6) A discriminating follow-up (example)\\nTo distinguish DM from instrumental/astrophysical causes, run targeted systematics and cross-checks that change instrumental/astrophysical responses but not a true DM signal in the predicted way, e.g.:\\n- Instrumental: split the data by time, hardware configuration, readout chain, and calibration constants; inject synthetic signals; look for coupling to environmental monitors; verify the line persists across independent instruments or detectors.\\n- Astrophysical vs DM: check spatial/kinematic signatures (e.g., sky position dependence, annual modulation phase, Doppler shift consistent with Earth\u2019s motion, or morphology predicted by the DM halo) and compare with known astrophysical line catalogs and backgrounds.\\nThese are necessary to support attribution beyond \u201csomething deviates from the null.\u201d\"\n}"
+          }
+        ],
+        "role": "assistant"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "none",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "store": false,
+    "temperature": 1.0,
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 550,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1229,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1779
+    },
+    "user": null,
+    "metadata": {}
+  },
+  "response_sha256": "2481dcfcc569d3dbb23a0e48aa8d334db59074981710c7db271d898d5dd797b6",
+  "returned_model": "gpt-5.2-2025-12-11",
+  "usage": {
+    "input_tokens": 550,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1229,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1779
+  },
+  "output_text": "{\n  \"global_p\": 9.956142414194563e-05,\n  \"unknown_lower\": 9.96e-08,\n  \"unknown_upper\": 0.000796768362929011,\n  \"replication_p\": 1e-08,\n  \"block_decision\": \"below_threshold\",\n  \"unknown_decision\": \"undetermined\",\n  \"replication_decision\": \"meets_threshold\",\n  \"particle_origin\": \"not_identified\",\n  \"explanation\": \"1) Global-null probability with the stated block dependence\\n- There are 1000 independent blocks. Within each block, the 8 cell test statistics are perfectly identical, so the event \u201cany of the 8 cells in a block crosses the local threshold\u201d is exactly the same as \u201cthe (common) block statistic crosses the threshold\u201d.\\n- The reported local one-sided tail probability for a single cell under the null is p = 9.96e-8. Because all cells in a block share the same statistic and same null marginal, each block has the same exceedance probability p.\\n- With independence across blocks, the global-null probability that any searched cell (equivalently: any block) reaches the local threshold is\\n  p_global = P(\u22c3_{b=1}^{1000} exceed_b) = 1 \u2212 (1 \u2212 p)^{1000}.\\n  Numerically: p_global = 1 \u2212 (1 \u2212 9.96e-8)^{1000} \u2248 9.956142414194563e-05.\\n- Comparison to the predetermined criterion p_global \u2264 2.87e-7: 9.96e-5 is much larger, so it does not meet the discovery criterion (i.e., it is below the required significance).\\n\\n2) Second auditor: only N=8000 and marginal p per cell; dependence unknown\\nLet A_i be the event that cell i exceeds the local threshold, with P(A_i)=p for all i, but with arbitrary dependence.\\n- Universal lower bound (sharp): P(\u22c3 A_i) \u2265 max_i P(A_i) = p. This is attained when all A_i are identical events (perfect dependence across all 8000 cells).\\n  Thus unknown_lower = p = 9.96e-8.\\n- Universal upper bound (sharp): P(\u22c3 A_i) \u2264 min(1, \u03a3 P(A_i)) = min(1, 8000 p) (Boole/union bound). This is attained when events are disjoint (or nearly so) up to probability mass constraints.\\n  Thus unknown_upper = 8000 \u00d7 9.96e-8 = 7.96768362929011e-4.\\n- Because the criterion 2.87e-7 lies strictly between these bounds (9.96e-8 < 2.87e-7 < 7.97e-4), the auditor cannot determine from N and marginal p alone whether the global criterion is met. Hence unknown_decision = \u201cundetermined\u201d.\\n\\n3) Independent preregistered replication run (single test)\\n- The validation run performs exactly one pre-registered test under a correctly calibrated null, so there is no look-elsewhere/selection correction needed for that run: p_global,rep = p_rep = 1e-8.\\n- Compare to the same criterion 2.87e-7: 1e-8 \u2264 2.87e-7, so replication_decision = \u201cmeets_threshold\u201d.\\n\\n4) What replication supports vs what it does not\\n- Statistically, the replication run by itself provides strong evidence against the specific null model used to compute p_rep (e.g., noise-only, background-only, etc.) at the tested frequency/template.\\n- However, \u201cdark-matter particle identified\u201d is a causal/physical attribution claim, not a statement that follows from p-values alone. A small p-value (even replicated) rules out only the null model as specified; it does not uniquely discriminate dark matter from an unmodeled instrumental artifact or an astrophysical line/background mismatch that is not included in the null.\\n- Therefore particle_origin = \u201cnot_identified\u201d. Identification requires demonstrating that plausible non-DM explanations are inconsistent with the full body of data and controls.\\n\\n5) Key dependence/selection points and limitations\\n- In the discovery scan, the only selection described is choosing the maximum cell. The stated dependence structure reduces 8000 nominal cells to 1000 independent effective trials; ignoring that would over-penalize, while assuming full independence would under-penalize if correlations exist.\\n- For the auditor with unknown dependence, only the Fr\u00e9chet-type bounds (max marginal; union bound) are justified; any stronger statement would require additional dependence information.\\n- Even with a \u201c5-sigma-equivalent\u201d p-value, model misspecification (incorrect null calibration, unaccounted systematics, or hidden trial factors) can invalidate the inferential meaning.\\n\\n6) A discriminating follow-up (example)\\nTo distinguish DM from instrumental/astrophysical causes, run targeted systematics and cross-checks that change instrumental/astrophysical responses but not a true DM signal in the predicted way, e.g.:\\n- Instrumental: split the data by time, hardware configuration, readout chain, and calibration constants; inject synthetic signals; look for coupling to environmental monitors; verify the line persists across independent instruments or detectors.\\n- Astrophysical vs DM: check spatial/kinematic signatures (e.g., sky position dependence, annual modulation phase, Doppler shift consistent with Earth\u2019s motion, or morphology predicted by the DM halo) and compare with known astrophysical line catalogs and backgrounds.\\nThese are necessary to support attribution beyond \u201csomething deviates from the null.\u201d\"\n}",
+  "grade": {
+    "status": "graded",
+    "structured_pass": true,
+    "checks": {
+      "global_p": true,
+      "unknown_lower": true,
+      "unknown_upper": true,
+      "block_decision": true,
+      "unknown_decision": true,
+      "replication_p": true,
+      "replication_decision": true,
+      "particle_origin": true
+    },
+    "scores": {
+      "local": 1.0,
+      "inference": 1.0
+    },
+    "scientific_pass": null,
+    "review_status": "pending",
+    "extra_fields": []
+  },
+  "finished_at": "2026-11-08T08:20:29.883638+00:00",
+  "latency_seconds": 19.249224125000183,
+  "record_sha256": "c0655cb2db2edaac860a5e4c066ba9380be7f3ab54503391774fd8e92beb6bf7"
+}

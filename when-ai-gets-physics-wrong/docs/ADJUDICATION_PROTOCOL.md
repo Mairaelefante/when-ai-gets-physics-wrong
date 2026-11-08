@@ -1,0 +1,27 @@
+# Frozen evaluation and adjudication protocol
+
+Question: within these four explicitly specified scenarios, can a model compute the local quantities yet draw an unjustified conclusion? This is a hypothesis, not a result. The benchmark is a small purposive diagnostic, not a population sample of science or tasks. Its stated assumptions are idealized, and conclusions apply only within them.
+
+Before model calls, freeze prompts, references, code, model IDs, number of trials, settings and scoring. Use three independent-context trials per task and model as a minimum exploratory pilot; five or more improves characterization but does not create task diversity. Prefer at least two contemporary frontier models if credentials/cost allow; do not call the authoring assistant an independent frontier-model trial. Models must not receive references, fixture answers, grader source, or previous trial conversations. Record tools available: the included runner is text-only, with no calculator or network tools for the model. Tool-enabled evaluation would be a distinct condition.
+
+Store complete API-visible requests and responses, including refusal/incomplete/error objects, model IDs, timestamps, elapsed time, usage and fingerprints. Internal chain-of-thought may not be exposed by a provider; do not claim it was captured. `store:false` requests provider non-storage but is not a statement about all provider retention policies. Do not overwrite failed attempts or quietly retry with revised prompts. For a retry use a new trial directory and retain the original. API errors and truncated outputs are not reasoning errors.
+
+## Review each response, blinded to model identity where possible
+
+1. Confirm transcript integrity and identical task version. Verify extracted text against the raw envelope. Check model/condition identification and termination.
+2. Classify malformed outputs separately. Distinguish failure to follow output format from scientific error. Optional extra fields are allowed, not endorsed. Numeric strings and unsupported decision synonyms can be manually interpreted but must not be silently rescored as a structured pass.
+3. Inspect every numeric field. Verify alternative derivations directly. A wrong key, unit ambiguity, or alternative interpretation may be a task/grader defect rather than a reasoning error. Preserve the original automatic verdict even if human-adjudicated differently.
+4. Evaluate explanation for (a) valid derivation, (b) assumptions and approximation domains, (c) the stated decision, (d) physical scope, (e) discriminating follow-up. Use docs/REFERENCE_SOLUTIONS.md and the original prompt, not keywords. Equivalent valid prose is accepted. A correct reference vector with contradictory prose is NOT a scientific pass.
+5. Record one of: scientific_pass, local_calculation_error, unsupported_inference_with_local_correct, mixed_error, task_ambiguity, grader_error, format_only, incomplete_or_api_error, or insufficient_evidence. More than one finding may be retained; choose a primary label and explain it.
+6. Every unsupported-inference finding must cite an exact quotation and task premise, plus why the conclusion does not follow. Do not infer a model's private reasoning or intent. Recompute contested values. Obtain a second human scientific review where possible; if unavailable say so.
+7. Quarantine task_ambiguity and grader_error before claiming model failure. A correction creates a new benchmark version; preserve affected trials and disclose their exclusion. Never tune prompts to maximize observed failure and then present the same trials as held out.
+
+For each transcript create a review JSON alongside it with `transcript_sha256`, `reviewer`, `review_date`, `primary_label`, `exact_quote`, `scientific_reason`, `alternative_interpretation_considered`, `task_ambiguous`, `grader_error`, `local_all_correct`, `scientific_pass`, and `second_reviewer_status`. The transcript hash must bind the review to the evidence. Leave unknowns null, not false. No automated scientific pass is issued by the included grader.
+
+## Reporting
+
+Report per model and task attempted/completed/API error/format error/structured pass counts. Show local and inference field scores separately, and manually adjudicated scientific outcomes separately. The primary target event requires all local numeric fields correct AND an adjudicated unsupported inference. Correct numeric fields alone or a bad enum alone is insufficient evidence for the scientific claim. Denominators must be explicit; include all attempts and explain exclusions.
+
+For independent repeated calls to one frozen task/condition, report binomial Wilson intervals as descriptive uncertainty on that condition's success probability (not on all scientific reasoning). Report pass^k only if k and the sampling assumptions are defined: p^k for independent attempts, or unbiased finite-sample estimate choose(c,k)/choose(n,k) when n>=k. Do not call probability of at least one success “pass^k.” With only three calls, large uncertainty is unavoidable. Task-level aggregation does not make the tasks independent random samples; avoid broad significance claims or causal comparisons between model families.
+
+Predetermine interpretations: no observed failures is informative about these tasks, not proof of general reliability. A verified failure demonstrates that particular behavior under that condition, not a universal deficit. Multiple failures may motivate further blinded variants. Zero completed trials means no model-performance conclusion at all.

@@ -1,0 +1,11 @@
+{
+  "global_p": 9.95950450442569e-05,
+  "unknown_lower": 9.96e-08,
+  "unknown_upper": 0.0007968000000000001,
+  "block_decision": "below_threshold",
+  "unknown_decision": "undetermined",
+  "replication_p": 1e-08,
+  "replication_decision": "meets_threshold",
+  "particle_origin": "not_identified",
+  "explanation": "There are 1000 independent blocks, not 8000 independent tests. The exact global null tail is 1-(1-p)^1000=9.959504504e-5, which fails the 2.87e-7 criterion. Without dependence knowledge the sharp union bounds p and min(8000p,1) straddle the criterion, so the decision is undetermined. Identical events attain the lower bound and disjoint events the upper here. The independent preregistered single validation test has no within-run selection penalty and p=1e-8 meets the criterion on its own. This supports a departure from its calibrated null, but does not uniquely identify a particle origin. Vary gain, tuning and instrumental configurations and test competing causal explanations; do not simply multiply the two p-values."
+}

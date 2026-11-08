@@ -1,0 +1,11 @@
+{
+  "plane_ratio": 1.2234042553191489,
+  "plane_se": 0.0509819759630599,
+  "finite_ratio": 0.5851063829787234,
+  "finite_se": 0.04508320554175195,
+  "finite_upper95": 0.6734694658405572,
+  "plane_decision": "enhancement",
+  "finite_decision": "enhancement",
+  "universal_claim": "established",
+  "explanation": "AUTHORED INCORRECT EXAMPLE, NOT A MODEL TRIAL: the plane ratio exceeds 1, so scattering enhances all real detectors despite the computed finite ratio below 1."
+}

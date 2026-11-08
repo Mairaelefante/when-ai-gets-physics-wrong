@@ -1,0 +1,10 @@
+{
+  "amplitude": 6.800401203610833,
+  "shared_se": 2.369989567836737,
+  "diagonal_se": 2.4142865611338276,
+  "z": 2.8693802267737647,
+  "chi2": 3.4809428284854564,
+  "significance": "below_threshold",
+  "origin": "not_identified",
+  "explanation": "Subtract nominal gB to obtain d=[4,4,8,4,0,2]. Marginalizing the stated Gaussian calibration error gives C=4I+4ones and Cinv=(I-ones/7)/4. GLS gives a=(s^T Cinv d)/(s^T Cinv s), SE=1/sqrt(s^T Cinv s), z=a/SE=2.86938, below 5. The residual quadratic is 3.48094 with five degrees of freedom since only one amplitude is fit with known covariance. The diagonal refit SE is 2.41429, slightly larger than 2.36999; shared noise affects common and contrast directions differently. This is a fixed template statistical analysis under externally validated covariance, not identification of a particle. Independently validate gain/noise assumptions and compare instrumental controls and alternate templates."
+}

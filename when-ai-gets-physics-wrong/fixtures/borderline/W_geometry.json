@@ -1,0 +1,12 @@
+{
+  "plane_ratio": 1.2257287234042553,
+  "plane_se": 0.0509819759630599,
+  "finite_ratio": 0.5851063829787234,
+  "finite_se": 0.04508320554175195,
+  "finite_upper95": 0.6734694658405572,
+  "plane_decision": "enhancement",
+  "finite_decision": "suppression",
+  "universal_claim": "not_established",
+  "explanation": "The totals B=94, A=115, F=55 give the two weighted ratios. For each ratio r, paired variance is sum((X-rB)^2)/(100*99*mean(B)^2). The plane interval lies above 1, supporting conditional plane-score enhancement. The aperture interval lies below 1, supporting conditional finite-score suppression, with upper endpoint 0.6734694658. These are nominal sampling intervals, not systematic bounds. The shared incident states require covariance. This launch ensemble includes no in-scattering from outside its initial aperture, so it cannot establish a full-flux or universal real-detector prediction. Enlarge the source area and verify convergence with consistent area/angle normalization.",
+  "notes": "Authored rounding/tolerance boundary fixture, not a model output."
+}

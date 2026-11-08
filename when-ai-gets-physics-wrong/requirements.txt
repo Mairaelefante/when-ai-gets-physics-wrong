@@ -1,0 +1,3 @@
+# The evaluation harness, deterministic grader, offline replay and UI builder use the Python standard library (Python >=3.10).
+# For additional numerical cross-checks:
+# python -m pip install -r requirements-verification.txt

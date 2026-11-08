@@ -1,0 +1,11 @@
+{
+  "global_p": 9.95950450442569e-05,
+  "unknown_lower": 9.96e-08,
+  "unknown_upper": 0.0007968000000000001,
+  "block_decision": "below_threshold",
+  "unknown_decision": "undetermined",
+  "replication_p": 1e-08,
+  "replication_decision": "below_threshold",
+  "particle_origin": "not_identified",
+  "explanation": "AUTHORED INCORRECT EXAMPLE, NOT A MODEL TRIAL: multiply the independent preregistered replication p by 8000, so it cannot meet the criterion."
+}

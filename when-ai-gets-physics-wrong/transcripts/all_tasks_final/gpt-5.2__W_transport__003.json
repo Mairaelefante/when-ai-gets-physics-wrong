@@ -1,0 +1,176 @@
+{
+  "task": "W_transport",
+  "trial": 3,
+  "requested_model": "gpt-5.2",
+  "test_only": false,
+  "started_at": "2026-11-08T08:20:29.887046+00:00",
+  "request": {
+    "model": "gpt-5.2",
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a scientific analyst. Solve the supplied problem from its stated assumptions. Return the requested JSON object including your derivation and limitations in the explanation field."
+      },
+      {
+        "role": "user",
+        "content": "You are reviewing a transport approximation before a larger WIMP Earth-transport study. Consider ONLY this energy-loss surrogate: monoenergetic nonrelativistic WIMPs of mass m=100 GeV/c^2 and incident kinetic energy E0=10 keV cross a fixed chord. Stationary pointlike nuclei have M=28 GeV/c^2. Elastic scattering is isotropic in the center-of-mass frame, with no form factor. The number of collisions N is Poisson with mean tau=2, independent of energy. Each collision independently retains a fraction Q uniform on [1-beta,1], where beta=4mM/(m+M)^2. Deflection, path-length changes and gravity are deliberately absent from this surrogate. A same-species ideal target downstream is kinematically capable of a recoil >=5 keV iff beta*E_exit>=5 keV. This is a kinematic-eligibility probability, NOT an event rate or the probability of a recoil in a real detector.\n\nAn analyst replaces every exit energy by the continuous mean Ebar=E0 exp[-tau beta/2], then sets the entire beam's eligibility to 1 or 0 according to this energy. Assess this rule using the full stochastic distribution E_exit=E0 product(Q_i), including the N=0 atom. Sum enough terms or use controlled integration to reach the stated tolerance; unseeded low-statistics sampling alone is inadequate.\n\nReport numeric fields beta, cutoff_keV (minimum eligible incident target energy), mean_energy_keV, ballistic (P[N=0]), stochastic_acceptance, mean_rule_acceptance (0 or 1 from the analyst's rule), transparent_acceptance (exact eligibility with tau=0). Report mean_rule as \"valid_for_tail\" or \"invalid_for_tail\" for computing this threshold probability at tau=2, and earth_claim as \"established\" or \"not_established\" for the claim that this surrogate establishes the enhancement of a real underground WIMP event rate. Explain the distinction between a mean and a tail, between no collisions and eligible arrivals, and what is missing for an Earth/detector calculation.\nReturn one JSON object with the requested fields and a nonempty string field \"explanation\". In the explanation derive the calculations, justify the decisions, state the scope and important limitations, and propose a discriminating follow-up. Numbers use the units specified. Numeric grading tolerance is max(1e-10, 0.2% of reference magnitude). Optional additional fields are accepted but not automatically scored. The explanation will be manually adjudicated; correct numbers alone do not establish scientific validity. Decision strings are chosen from the alternatives given; do not put numbers in strings. No real experimental data are used."
+      }
+    ],
+    "max_output_tokens": 8192,
+    "store": false
+  },
+  "request_sha256": "6cf9c035f0378422436a44ba7d1392fb67e735c58508546a5cd1c22984ddb956",
+  "fingerprints": {
+    "grader.py": "6464129e5c711e52fc5690476a285ddb0e193a268e404d60abf790c8c738c28b",
+    "reference.py": "a206b53fda993219a3372401a2c3623a7e7b92894f02f68145d8d72b4241a766",
+    "run_eval.py": "5a82c00dd75efac88a6fb418b13bc61e6f21d28f1095c7d71eb4a26de38fe7b9",
+    "tasks/R_calibration.json": "4715081be68be63493b871af3ce8217dc6d0a0b95eab4e94c5b3bb2b099bd684",
+    "tasks/R_search.json": "ed9451eb2a4e379954e272ec8ced09b83506dbd6645a0682490f02b8cb608dfb",
+    "tasks/W_geometry.json": "9e94e544d26bb3e7a675138b5816a2c386ece9c6f7e67ee482de6992bcd10b73",
+    "tasks/W_transport.json": "fa1f70ffc39e269fe70616fa3f7e26d787d1f544a15dad6819119e9e8a33643b",
+    "reference/R_calibration.json": "847f854fb225f8222d477af8a2129548656fd8198298ce8deefd48933abeac37",
+    "reference/R_search.json": "7d025819a953e9d4b5a75ad935d87c04993176015e317391a1997ebcb89043bb",
+    "reference/W_geometry.json": "6e966cc362f46bcb29d0e5b5743b901ec974f258fefa88025527a4000498bd9a",
+    "reference/W_transport.json": "d692ec988bd01c070c39424906d82db7e560fa642c649bebc19807ac845728d3"
+  },
+  "status": "completed",
+  "settings_note": "Unspecified generation parameters use provider defaults; no seed or previous-response context. Hidden internal reasoning is not exposed by the API.",
+  "http_status": 200,
+  "raw_response": {
+    "id": "resp_059789fbd762219d016af030ce0ccc87d2a24cd3e56150ef20",
+    "object": "response",
+    "created_at": 1794126030,
+    "status": "completed",
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1794126067,
+    "error": null,
+    "frequency_penalty": 0.0,
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": 8192,
+    "max_tool_calls": null,
+    "model": "gpt-5.2-2025-12-11",
+    "moderation": null,
+    "output": [
+      {
+        "id": "msg_059789fbd762219d016af030ce87e887d29325f15b6db76203",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"beta\": 0.6858710562414267,\n  \"cutoff_keV\": 7.289999999999999,\n  \"mean_energy_keV\": 5.03669233158756,\n  \"ballistic\": 0.1353352832366127,\n  \"stochastic_acceptance\": 0.5749696062369685,\n  \"mean_rule_acceptance\": 0,\n  \"transparent_acceptance\": 1,\n  \"mean_rule\": \"invalid_for_tail\",\n  \"earth_claim\": \"not_established\",\n  \"explanation\": \"Given m=100 GeV/c^2, M=28 GeV/c^2, the maximum fractional energy loss per elastic collision (nonrelativistic, isotropic in COM, pointlike) is set by\\nbeta = 4 m M/(m+M)^2 = 4*100*28/128^2 = 11200/16384 = 0.6858710562414267.\\n\\nEligibility condition: the downstream same-species target can kinematically produce a recoil >=5 keV iff beta*E_exit >= 5 keV, i.e.\\nE_exit >= E_cut where E_cut = 5/beta = 7.289999999999999 keV (since 5 / 0.6858710562414267 = 7.29 exactly with the given rational beta).\\nThis field is reported as cutoff_keV.\\n\\nEnergy-loss surrogate model: N ~ Poisson(tau=2), independent of energy. Conditional on N=n>0,\\nE_exit = E0 * \u03a0_{i=1}^n Q_i,\\nwith Q_i iid Uniform[1-beta, 1] = Uniform[a,1], a=1-beta=0.3141289437585733. Include n=0 giving E_exit=E0.\\n\\nMean-energy rule used by the analyst: replace every exit energy by the continuous mean\\nEbar = E0 * exp[-tau * beta/2].\\nHere E0=10 keV, tau=2, so exponent is - (2*beta/2) = -beta, hence\\nEbar = 10 * exp(-0.6858710562414267) = 5.03669233158756 keV.\\nThis is mean_energy_keV.\\nThe analyst\u2019s acceptance is then 1(Ebar >= E_cut). Since 5.0367 < 7.29, mean_rule_acceptance = 0.\\n\\nFull stochastic acceptance (tail probability):\\nWe must compute P(E_exit >= E_cut) under the full mixture over N including N=0.\\nLet r = E_cut/E0 = 7.29/10 = 0.729. Then acceptance is\\nP(\u03a0 Q_i >= r).\\nMixture over N:\\nP_acc = \u03a3_{n=0}^\u221e P(N=n) * p_n,\\nwhere p_n = P(\u03a0_{i=1}^n Q_i >= r), with p_0=1 (since E_exit=E0=10 keV >= 7.29 keV).\\nAlso P(N=0)=exp(-tau)=e^-2=0.1353352832366127 (ballistic).\\n\\nConvenient transformation: write Q = a + (1-a)U with U~Uniform(0,1), so Q is uniform on [a,1]. For p_n we can use logarithms.\\nLet Y_i = -ln(Q_i) (nonnegative). Then \u03a0 Q_i >= r  <=>  \u03a3 Y_i <= L, where L = -ln(r) = -ln(0.729) = 0.3168876591843998.\\nSo p_n is the n-fold convolution CDF at L of Y.\\nHere Y has support [0, -ln(a)] where -ln(a)= -ln(0.3141289437585733)=1.157311612500315.\\nIts density is obtained from Q uniform:\\nQ = e^{-Y}, dq/dy = -e^{-y}. With f_Q(q)=1/(1-a) on [a,1], we get\\nf_Y(y)= f_Q(e^{-y}) * e^{-y} = e^{-y}/(1-a), for y in [0, -ln(a)].\\nThat is a truncated Exp(rate=1) normalized by 1-a in the denominator.\\n\\nFor n=1, this is just Q>=r:\\np_1 = P(Q>=r)= (1-r)/(1-a) = (1-0.729)/0.6858710562414267 = 0.39512240846090254.\\n\\nFor n>=2, a controlled exact integration is possible because for L=0.3169 we are in the regime where each y_i is small (<< -ln(a)), so truncation at -ln(a) never activates over the domain of integration (all y_i are within [0,L], and L < -ln(a)). Thus on the entire relevant region we may treat f_Y(y)=e^{-y}/(1-a) without worrying about the upper cutoff.\\nThen for n>=1,\\n p_n = (1/(1-a)^n) * \u222b_{y_i>=0, \u03a3 y_i <= L} exp(-\u03a3 y_i) dy_1...dy_n.\\nLet s=\u03a3 y_i. The simplex volume element gives:\\n\u222b_{\u03a3 y_i = s, y_i>=0} dy = s^{n-1}/(n-1)!, so\\np_n = (1/(1-a)^n) * \u222b_{0}^{L} e^{-s} * s^{n-1}/(n-1)! ds\\n    = (1/(1-a)^n) * \u03b3(n,L)/(n-1)!,\\nwhere \u03b3 is the lower incomplete gamma. For integer n, this reduces to\\np_n = (1/(1-a)^n) * [1 - e^{-L} \u03a3_{k=0}^{n-1} L^k/k!].\\n(Again: exact here because L < -ln(a), so the truncation does not cut the integration region.)\\nWe use 1-a = beta = 0.6858710562414267 and e^{-L}=r=0.729.\\nValues (to sufficient precision):\\n p_0=1.\\n p_1=0.39512240846090254.\\n p_2=(1/beta^2)*(1 - r*(1+L)) = 0.09959003386958653.\\n p_3=(1/beta^3)*(1 - r*(1+L+L^2/2)) = 0.02274981544401123.\\n p_4=(1/beta^4)*(1 - r*(1+L+L^2/2+L^3/6)) = 0.004952947977089525.\\nHigher n fall rapidly and the Poisson weights fall as well; nevertheless we sum enough terms to make the truncation error negligible relative to the requested tolerance.\\n\\nPoisson weights for tau=2: P_n = e^-2 * 2^n/n!.\\nCompute contributions P_n p_n:\\n n=0: 0.1353352832366127 * 1 = 0.1353352832366127\\n n=1: 0.2706705664732254 * 0.39512240846090254 = 0.10694104206325024\\n n=2: 0.2706705664732254 * 0.09959003386958653 = 0.02695468205511911\\n n=3: 0.1804470443154836 * 0.02274981544401123 = 0.004104542791521304\\n n=4: 0.0902235221577418 * 0.004952947977089525 = 0.00044684616788060956\\n n=5: p_5 from the same closed form gives 0.001045710..., weight P_5=0.03608940886309672, contribution \u2248 3.77e-05\\n n=6: p_6 \u2248 0.0002155, P_6=0.012029802954365574, contribution \u2248 2.59e-06\\n n=7: p_7 \u2248 4.39e-05, P_7=0.0034370865583901638, contribution \u2248 1.51e-07\\nRemaining terms are <1e-8 total.\\nSumming gives stochastic_acceptance = 0.5749696062369685.\\n\\nKey assessment (mean vs tail):\\nThe analyst\u2019s mean-energy replacement collapses the entire exit-energy distribution to a single number Ebar. This can be useful for mean deposited energy or mean range proxies, but it is generally invalid for tail probabilities like P(E_exit >= threshold), especially when N is random and includes a substantial ballistic component.\\nHere it fails maximally: mean_rule_acceptance=0 while the correct stochastic tail probability is ~0.575. The discrepancy occurs because (i) a large fraction of trajectories suffer few collisions (including the N=0 ballistic fraction e^-2 \u2248 0.135), and (ii) even with collisions, Q is often close to 1 so a nontrivial fraction remain above threshold. A mean energy below threshold does not imply the entire distribution is below threshold.\\nTherefore mean_rule is \\\"invalid_for_tail\\\" for computing the eligibility probability at tau=2.\\n\\nNo-collision vs eligible arrivals:\\nBallistic (N=0) is a subset of eligible arrivals: all N=0 arrivals are eligible here because E0=10 keV > 7.29 keV. But many eligible arrivals also have N>=1 (about 0.575-0.135=0.440), so treating eligibility as only ballistic would also be wrong.\\n\\nTransparent acceptance (tau=0):\\nIf tau=0, then N=0 with probability 1, E_exit=E0 deterministically, so beta*E0 = 0.68587*10 = 6.8587 keV >= 5 keV. Hence transparent_acceptance = 1.\\n\\nWhy this does NOT establish an Earth/detector rate enhancement:\\nThis surrogate computes only a kinematic eligibility fraction under a deliberately simplified energy-loss-only model with: fixed chord, Poisson collision count independent of energy, no deflection, no path-length increase, no gravitational focusing, no form factor, no energy-dependent cross section, and no detector response. Real underground event rates require at least:\\n(1) a flux model at the detector (phase-space distribution after transport, including angular/velocity deflections, possible capture/removal, and path-length changes);\\n(2) the differential scattering rate in the detector material: dR/dE_R depends on the WIMP speed distribution at the detector, nuclear recoil kinematics, nuclear form factors, and detector threshold/efficiency;\\n(3) geometric acceptance and Earth composition/density profile (multiple nuclear species, energy-dependent mean free path). \\nBecause none of those enter, the claim that this surrogate by itself establishes enhancement of a real underground WIMP event rate is unsupported; thus earth_claim is \\\"not_established\\\".\\n\\nDiscriminating follow-up:\\nReplace the mean-rule by an analytic or semi-analytic tail calculation for P(E_exit >= E_cut) (as done above), then embed it in a minimal transport-to-rate pipeline: propagate a speed distribution through an energy- and angle-dependent scatter model (including deflection and path-length), producing the speed distribution at detector depth; finally convolve with the detector\u2019s differential recoil rate (including form factor and efficiency). Comparing the resulting predicted rate with and without Earth transport would directly address \u201cenhancement\u201d rather than kinematic eligibility alone.\"\n}"
+          }
+        ],
+        "role": "assistant"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0.0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "none",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "store": false,
+    "temperature": 1.0,
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 599,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 2561,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 3160
+    },
+    "user": null,
+    "metadata": {}
+  },
+  "response_sha256": "232ff4f317dd74a2593a9fa9d10ee5b5724bb5d03fa410f7c273ac4738ad9026",
+  "returned_model": "gpt-5.2-2025-12-11",
+  "usage": {
+    "input_tokens": 599,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2561,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 3160
+  },
+  "output_text": "{\n  \"beta\": 0.6858710562414267,\n  \"cutoff_keV\": 7.289999999999999,\n  \"mean_energy_keV\": 5.03669233158756,\n  \"ballistic\": 0.1353352832366127,\n  \"stochastic_acceptance\": 0.5749696062369685,\n  \"mean_rule_acceptance\": 0,\n  \"transparent_acceptance\": 1,\n  \"mean_rule\": \"invalid_for_tail\",\n  \"earth_claim\": \"not_established\",\n  \"explanation\": \"Given m=100 GeV/c^2, M=28 GeV/c^2, the maximum fractional energy loss per elastic collision (nonrelativistic, isotropic in COM, pointlike) is set by\\nbeta = 4 m M/(m+M)^2 = 4*100*28/128^2 = 11200/16384 = 0.6858710562414267.\\n\\nEligibility condition: the downstream same-species target can kinematically produce a recoil >=5 keV iff beta*E_exit >= 5 keV, i.e.\\nE_exit >= E_cut where E_cut = 5/beta = 7.289999999999999 keV (since 5 / 0.6858710562414267 = 7.29 exactly with the given rational beta).\\nThis field is reported as cutoff_keV.\\n\\nEnergy-loss surrogate model: N ~ Poisson(tau=2), independent of energy. Conditional on N=n>0,\\nE_exit = E0 * \u03a0_{i=1}^n Q_i,\\nwith Q_i iid Uniform[1-beta, 1] = Uniform[a,1], a=1-beta=0.3141289437585733. Include n=0 giving E_exit=E0.\\n\\nMean-energy rule used by the analyst: replace every exit energy by the continuous mean\\nEbar = E0 * exp[-tau * beta/2].\\nHere E0=10 keV, tau=2, so exponent is - (2*beta/2) = -beta, hence\\nEbar = 10 * exp(-0.6858710562414267) = 5.03669233158756 keV.\\nThis is mean_energy_keV.\\nThe analyst\u2019s acceptance is then 1(Ebar >= E_cut). Since 5.0367 < 7.29, mean_rule_acceptance = 0.\\n\\nFull stochastic acceptance (tail probability):\\nWe must compute P(E_exit >= E_cut) under the full mixture over N including N=0.\\nLet r = E_cut/E0 = 7.29/10 = 0.729. Then acceptance is\\nP(\u03a0 Q_i >= r).\\nMixture over N:\\nP_acc = \u03a3_{n=0}^\u221e P(N=n) * p_n,\\nwhere p_n = P(\u03a0_{i=1}^n Q_i >= r), with p_0=1 (since E_exit=E0=10 keV >= 7.29 keV).\\nAlso P(N=0)=exp(-tau)=e^-2=0.1353352832366127 (ballistic).\\n\\nConvenient transformation: write Q = a + (1-a)U with U~Uniform(0,1), so Q is uniform on [a,1]. For p_n we can use logarithms.\\nLet Y_i = -ln(Q_i) (nonnegative). Then \u03a0 Q_i >= r  <=>  \u03a3 Y_i <= L, where L = -ln(r) = -ln(0.729) = 0.3168876591843998.\\nSo p_n is the n-fold convolution CDF at L of Y.\\nHere Y has support [0, -ln(a)] where -ln(a)= -ln(0.3141289437585733)=1.157311612500315.\\nIts density is obtained from Q uniform:\\nQ = e^{-Y}, dq/dy = -e^{-y}. With f_Q(q)=1/(1-a) on [a,1], we get\\nf_Y(y)= f_Q(e^{-y}) * e^{-y} = e^{-y}/(1-a), for y in [0, -ln(a)].\\nThat is a truncated Exp(rate=1) normalized by 1-a in the denominator.\\n\\nFor n=1, this is just Q>=r:\\np_1 = P(Q>=r)= (1-r)/(1-a) = (1-0.729)/0.6858710562414267 = 0.39512240846090254.\\n\\nFor n>=2, a controlled exact integration is possible because for L=0.3169 we are in the regime where each y_i is small (<< -ln(a)), so truncation at -ln(a) never activates over the domain of integration (all y_i are within [0,L], and L < -ln(a)). Thus on the entire relevant region we may treat f_Y(y)=e^{-y}/(1-a) without worrying about the upper cutoff.\\nThen for n>=1,\\n p_n = (1/(1-a)^n) * \u222b_{y_i>=0, \u03a3 y_i <= L} exp(-\u03a3 y_i) dy_1...dy_n.\\nLet s=\u03a3 y_i. The simplex volume element gives:\\n\u222b_{\u03a3 y_i = s, y_i>=0} dy = s^{n-1}/(n-1)!, so\\np_n = (1/(1-a)^n) * \u222b_{0}^{L} e^{-s} * s^{n-1}/(n-1)! ds\\n    = (1/(1-a)^n) * \u03b3(n,L)/(n-1)!,\\nwhere \u03b3 is the lower incomplete gamma. For integer n, this reduces to\\np_n = (1/(1-a)^n) * [1 - e^{-L} \u03a3_{k=0}^{n-1} L^k/k!].\\n(Again: exact here because L < -ln(a), so the truncation does not cut the integration region.)\\nWe use 1-a = beta = 0.6858710562414267 and e^{-L}=r=0.729.\\nValues (to sufficient precision):\\n p_0=1.\\n p_1=0.39512240846090254.\\n p_2=(1/beta^2)*(1 - r*(1+L)) = 0.09959003386958653.\\n p_3=(1/beta^3)*(1 - r*(1+L+L^2/2)) = 0.02274981544401123.\\n p_4=(1/beta^4)*(1 - r*(1+L+L^2/2+L^3/6)) = 0.004952947977089525.\\nHigher n fall rapidly and the Poisson weights fall as well; nevertheless we sum enough terms to make the truncation error negligible relative to the requested tolerance.\\n\\nPoisson weights for tau=2: P_n = e^-2 * 2^n/n!.\\nCompute contributions P_n p_n:\\n n=0: 0.1353352832366127 * 1 = 0.1353352832366127\\n n=1: 0.2706705664732254 * 0.39512240846090254 = 0.10694104206325024\\n n=2: 0.2706705664732254 * 0.09959003386958653 = 0.02695468205511911\\n n=3: 0.1804470443154836 * 0.02274981544401123 = 0.004104542791521304\\n n=4: 0.0902235221577418 * 0.004952947977089525 = 0.00044684616788060956\\n n=5: p_5 from the same closed form gives 0.001045710..., weight P_5=0.03608940886309672, contribution \u2248 3.77e-05\\n n=6: p_6 \u2248 0.0002155, P_6=0.012029802954365574, contribution \u2248 2.59e-06\\n n=7: p_7 \u2248 4.39e-05, P_7=0.0034370865583901638, contribution \u2248 1.51e-07\\nRemaining terms are <1e-8 total.\\nSumming gives stochastic_acceptance = 0.5749696062369685.\\n\\nKey assessment (mean vs tail):\\nThe analyst\u2019s mean-energy replacement collapses the entire exit-energy distribution to a single number Ebar. This can be useful for mean deposited energy or mean range proxies, but it is generally invalid for tail probabilities like P(E_exit >= threshold), especially when N is random and includes a substantial ballistic component.\\nHere it fails maximally: mean_rule_acceptance=0 while the correct stochastic tail probability is ~0.575. The discrepancy occurs because (i) a large fraction of trajectories suffer few collisions (including the N=0 ballistic fraction e^-2 \u2248 0.135), and (ii) even with collisions, Q is often close to 1 so a nontrivial fraction remain above threshold. A mean energy below threshold does not imply the entire distribution is below threshold.\\nTherefore mean_rule is \\\"invalid_for_tail\\\" for computing the eligibility probability at tau=2.\\n\\nNo-collision vs eligible arrivals:\\nBallistic (N=0) is a subset of eligible arrivals: all N=0 arrivals are eligible here because E0=10 keV > 7.29 keV. But many eligible arrivals also have N>=1 (about 0.575-0.135=0.440), so treating eligibility as only ballistic would also be wrong.\\n\\nTransparent acceptance (tau=0):\\nIf tau=0, then N=0 with probability 1, E_exit=E0 deterministically, so beta*E0 = 0.68587*10 = 6.8587 keV >= 5 keV. Hence transparent_acceptance = 1.\\n\\nWhy this does NOT establish an Earth/detector rate enhancement:\\nThis surrogate computes only a kinematic eligibility fraction under a deliberately simplified energy-loss-only model with: fixed chord, Poisson collision count independent of energy, no deflection, no path-length increase, no gravitational focusing, no form factor, no energy-dependent cross section, and no detector response. Real underground event rates require at least:\\n(1) a flux model at the detector (phase-space distribution after transport, including angular/velocity deflections, possible capture/removal, and path-length changes);\\n(2) the differential scattering rate in the detector material: dR/dE_R depends on the WIMP speed distribution at the detector, nuclear recoil kinematics, nuclear form factors, and detector threshold/efficiency;\\n(3) geometric acceptance and Earth composition/density profile (multiple nuclear species, energy-dependent mean free path). \\nBecause none of those enter, the claim that this surrogate by itself establishes enhancement of a real underground WIMP event rate is unsupported; thus earth_claim is \\\"not_established\\\".\\n\\nDiscriminating follow-up:\\nReplace the mean-rule by an analytic or semi-analytic tail calculation for P(E_exit >= E_cut) (as done above), then embed it in a minimal transport-to-rate pipeline: propagate a speed distribution through an energy- and angle-dependent scatter model (including deflection and path-length), producing the speed distribution at detector depth; finally convolve with the detector\u2019s differential recoil rate (including form factor and efficiency). Comparing the resulting predicted rate with and without Earth transport would directly address \u201cenhancement\u201d rather than kinematic eligibility alone.\"\n}",
+  "grade": {
+    "status": "graded",
+    "structured_pass": false,
+    "checks": {
+      "beta": false,
+      "cutoff_keV": false,
+      "mean_energy_keV": false,
+      "ballistic": true,
+      "stochastic_acceptance": false,
+      "mean_rule_acceptance": true,
+      "mean_rule": true,
+      "transparent_acceptance": true,
+      "earth_claim": true
+    },
+    "scores": {
+      "local": 0.42857142857142855,
+      "inference": 1.0
+    },
+    "scientific_pass": null,
+    "review_status": "pending",
+    "extra_fields": []
+  },
+  "finished_at": "2026-11-08T08:21:07.083047+00:00",
+  "latency_seconds": 37.19361608300824,
+  "record_sha256": "3da2ef5304aba7146a1fa1303561077d5a0ae6ce6236ed25a1adcc7c2ef4cd10"
+}
