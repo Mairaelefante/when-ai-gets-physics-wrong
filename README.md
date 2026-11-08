@@ -1,4 +1,6 @@
-![When AI Gets Physics Wrong](cover.png)
+![When AI Gets Physics Wrong](cover.svg)
+
+**[Explore the interactive demo](when-ai-gets-physics-wrong/OPEN_DEMO.html) · [Evaluation report](when-ai-gets-physics-wrong/REPORT.md) · [Source code](when-ai-gets-physics-wrong/) · [WIMP physics project](https://github.com/Mairaelefante/wimp-earth-transport)**
 
 # When AI Gets Physics Wrong
 
@@ -18,7 +20,7 @@ The project also includes an interactive 3D website connecting the underlying ph
 
 ## Explore the Interactive Demo
 
-**[Open the interactive demo](OPEN_DEMO.html)**
+**[Open the interactive demo](when-ai-gets-physics-wrong/OPEN_DEMO.html)**
 
 The demonstration includes:
 
